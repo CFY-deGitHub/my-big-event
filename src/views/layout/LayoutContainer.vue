@@ -20,10 +20,18 @@ onMounted(() => {
   userStore.getUser()
 })
 
-const handleCommand = (key) => {
+const handleCommand = async (key) => {
   if (key === 'logout') {
     // 退出登录
+    await ElMessageBox.confirm('你确认退出大事件吗？', '温馨提示', {
+      type: 'warning',
+      confirnButtonText: '确认',
+      cancelButtonText: '取消'
+    })
+
     // 清除本地的数据 (token + user 信息)
+    userStore.removeToken() // 清除本地存储的token数据
+    userStore.setUser({}) // 清除存储在本地的用户信息
     router.push('/login')
   } else {
     // 跳转操作
