@@ -2,6 +2,7 @@
 
 <template>
   <div>
+    <!-- App.vue 只需要留一个路由出口 router-view 即可 -->
     <router-view></router-view>
   </div>
 </template>
